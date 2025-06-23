@@ -11,11 +11,14 @@ const CreateProduct = async(req,res) => {
         return res.status(400).json({error:"Fill all the necessary details !"})
        }
 
+       const imagePath = req.file ? req.file.path : null;
+
        const product = new Product({
         name,
         description,
         category,
         price,
+        image:imagePath,
         createdBy:req.user.userId
        });
 

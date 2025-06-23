@@ -4,12 +4,14 @@ const AuthMiddleware = require('../middlewares/AuthMiddleware');
 
 const RoleMiddleware = require('../middlewares/RoleMiddleware');
 
+const upload = require('../middlewares/Upload');
+
 const express = require('express');
 
 const ProductRouter = express.Router();
 
 
-ProductRouter.post('/',AuthMiddleware,RoleMiddleware("admin"),CreateProduct);
+ProductRouter.post('/',AuthMiddleware,RoleMiddleware("admin"),upload.single("image"),CreateProduct);
 
 ProductRouter.get('/',AuthMiddleware,GetAllProducts);
 

@@ -27,6 +27,8 @@ app.use(helmet());
 
 app.use(morgan("dev"));
 
+app.use('/uploads', express.static('uploads'));
+
 
 const limiter = rateLimit({
     windowMS:5*60*1000,
